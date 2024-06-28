@@ -397,6 +397,18 @@ view: dim_subscription {
     sql: ${TABLE}.shipping_period ;;
   }
 
+  dimension: current_plan {
+    group_label: "Current Plan"
+    type: string
+    sql: ${TABLE}.current_plan ;;
+  }
+
+  dimension: current_status {
+    group_label: "Current Plan"
+    type: string
+    sql: ${TABLE}.current_status ;;
+  }
+
   dimension: lifetime {
     group_label: "Lifetime metrics"
     description: "number of days between subscription date and subscription end date / current date"
@@ -432,16 +444,6 @@ view: dim_subscription {
     type: yesno
     label: "Is Current Subscription"
     sql: ${TABLE}.is_current_subscription ;;
-  }
-
-  dimension: current_plan {
-    type: string
-    sql: ${TABLE}.current_plan ;;
-  }
-
-  dimension: current_status {
-    type: string
-    sql: ${TABLE}.current_status ;;
   }
 
   dimension: current_type {
