@@ -23,20 +23,6 @@ view: dim_subscription {
        end ;;
   }
 
-  dimension_group: date_ended {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.date_ended ;;
-  }
-
   dimension_group: date_started {
     type: time
     timeframes: [
@@ -49,6 +35,20 @@ view: dim_subscription {
       year
     ]
     sql: ${TABLE}.date_started ;;
+  }
+
+  dimension_group: date_ended {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date_ended ;;
   }
 
   dimension_group: next_billing_date {
@@ -202,7 +202,6 @@ view: dim_subscription {
     sql: ${TABLE}.adjust_tracker_name ;;
   }
 
-
   dimension: channel {
     group_label: "Marketing"
     type: string
@@ -255,50 +254,50 @@ view: dim_subscription {
   }
 
   dimension: landing_page_host {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.landing_page_host ;;
   }
 
   dimension: landing_page_url {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.landing_page_url ;;
   }
 
   dimension: utm_campaign {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.utm_campaign ;;
   }
 
   dimension: utm_content {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.utm_content ;;
   }
 
   dimension: utm_medium {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.utm_medium ;;
   }
 
   dimension: utm_source {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.utm_source ;;
   }
 
   dimension: utm_term {
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.utm_term ;;
   }
 
   dimension: first_coupon {
     description: "First used coupon for subscription"
-    label: "Marketing"
+    group_label: "Marketing"
     type: string
     sql: ${TABLE}.first_coupon ;;
   }
@@ -350,10 +349,22 @@ view: dim_subscription {
     sql: ${TABLE}.billing_period ;;
   }
 
+  dimension: current_plan {
+    group_label: "Current Plan"
+    type: string
+    sql: ${TABLE}.current_plan ;;
+  }
+
   dimension: price {
     group_label: "Current Plan"
     type: number
     sql: ${TABLE}.price ;;
+  }
+
+  dimension: current_status {
+    group_label: "Current Plan"
+    type: string
+    sql: ${TABLE}.current_status ;;
   }
 
   dimension: monthly_price {
@@ -395,18 +406,6 @@ view: dim_subscription {
     group_label: "Current Plan"
     type: number
     sql: ${TABLE}.shipping_period ;;
-  }
-
-  dimension: current_plan {
-    group_label: "Current Plan"
-    type: string
-    sql: ${TABLE}.current_plan ;;
-  }
-
-  dimension: current_status {
-    group_label: "Current Plan"
-    type: string
-    sql: ${TABLE}.current_status ;;
   }
 
   dimension: lifetime {
